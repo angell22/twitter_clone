@@ -1,0 +1,5 @@
+= simple_form_for @tweet do |form| 
+  section.row
+    section.col
+      = form.input :content, label:false, placeholder: "What's happening?", input_html: {class: 'w-100'}
+      = form.submit 'Tweet'

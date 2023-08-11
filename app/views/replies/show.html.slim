@@ -1,0 +1,8 @@
+h1 = @tweet.content
+p = @tweet.created_at
+
+= render 'new', tweet: @tweet
+
+h2 Replies
+= render @tweet.replies
+

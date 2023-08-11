@@ -1,0 +1,26 @@
+section.container.col-md-8
+  section.row
+    section.col.border
+      section.row
+        h1.fw-bold.fs-4 Thread
+
+  section.row 
+    section.col.border
+      section.row
+        h6 = @tweet.user.username
+        p = @tweet.content
+
+  section.row
+    - @tweet.replies.each do |reply| 
+      section.card.border
+        p.mb-0 = reply.user.username
+        p.mb-0 = reply.content 
+        p = reply.created_at 
+        - if reply.user == current_user
+          = link_to 'Delete', [reply.tweet, reply], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+
+  = simple_form_for ([@tweet, @tweet.replies.build]) do |form|
+    section.row.min-vh-100.flex-column 
+      section.col.border.py-3
+        = form.input :content, label:false, placeholder: 'Tweet your reply', input_html: { class: 'w-100' }
+        = form.submit

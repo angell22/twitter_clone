@@ -1,0 +1,15 @@
+section.bg-secondary.py-5
+  section.container.py-5
+    section.row.justify-content-center
+      section.card.w-50.my-5
+        section.card-body
+          i.fa-3x.fa-brands.fa-twitter
+          h4.card-title.pb-3.fw-bold.text-center Sign in to Twitter
+          = simple_form_for @user, url: sessions_path do |f|
+            = f.input :email, label: 'Email address', placeholder: 'Enter email', input_html: {class: 'form-control mb-3'}
+            = f.input :password, label: 'Password', placeholder: 'Enter password', input_html: {class: 'form-control mb-3'}
+            = f.submit 'Log in', class: 'btn btn-primary'
+          hr
+          section.row.text-center.mb-5.pb-5
+            p Don't have an account?
+            = link_to 'Sign up', new_user_path

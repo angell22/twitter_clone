@@ -1,0 +1,8 @@
+- if current_user
+  p Name: #{current_user.username}
+  p Email: #{current_user.email}
+- else
+  p You are not currently logged in
+
+= link_to 'Log_out', session_path, data: { turbo_method: :delete, turbo_confirm: 'Log out of Twitter?' }
+= link_to 'Go to homepage', tweets_path

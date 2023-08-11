@@ -1,0 +1,31 @@
+section.container.col-md-8
+  section.row
+    section.col.border
+      section.row.text-start
+        h1.fs-4.pt-2 Exploree
+        
+  section.row 
+    section.col.border
+      section.row.mb-3.mt-3
+        - if user_signed_in?
+          = render 'tweet_form', locals: { tweet: current_user.tweets }
+
+      section.row
+        - @tweets.each do |tweet|
+          section.card.border.py-3.px-3
+            = render tweet
+            br
+            
+footer.bg-primary.text-white.py-3
+  section.container
+    section.row
+      section.col-md-6.justify-content-center
+        h3.text-center Don't miss what's happening
+        p.text-center People on twitter are the first to know
+      section.col-md-4.mt-4
+        - if !user_signed_in?
+          p.text-end = link_to 'Log in', new_session_path, class: 'text-white'
+
+        - if user_signed_in?
+          p.text-end = link_to 'Log out', session_path(current_user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-white'
+

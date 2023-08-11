@@ -1,0 +1,13 @@
+section.tweet-container
+  = link_to tweet.user.username, tweet.user
+  | &nbsp;&nbsp;&nbsp;
+  = time_ago_in_words(tweet.created_at)
+  | ago  
+  br
+  p.mt-2.mb-0 = tweet.content
+  
+  br
+  = link_to 'Reply', tweet_path(tweet), locals: { tweet: tweet }
+  | &nbsp;&nbsp;&nbsp;
+  - if tweet.user == current_user
+    = link_to 'Delete', tweet_path(tweet), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

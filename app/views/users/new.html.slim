@@ -1,6 +1,17 @@
-= simple_form_for @user do |f|
-  = f.input :username 
-  = f.input :email 
-  = f.input :password 
-  = f.input :password_confirmation 
-  = f.submit 
+section.bg-secondary.py-5
+  section.container.py-5
+    section.row.justify-content-center
+      section.card.w-50.my-3
+        section.card-body
+          i.fa-3x.fa-brands.fa-twitter
+          h4.card-title.pb-3.fw-bold.text-center Join Twitter today
+          = simple_form_for @user do |f|
+            = f.input :username, label: 'Username', placeholder: 'Enter username', input_html: {class: 'form-control mb-3'}
+            = f.input :email, label: 'Email address', placeholder: 'Enter email', input_html: {class: 'form-control mb-3'}
+            = f.input :password, label: 'Password', placeholder: 'Enter pasword', input_html: {class: 'form-control mb-3'}
+            = f.input :password_confirmation, label: 'Password confirmation', placeholder: 'Enter password', input_html: {class: 'form-control mb-3'}
+            = f.submit 'Register', class: 'btn btn-primary'
+          hr
+          section.row.text-center.mb-3.pb-3
+            p.mt-5 Have an account already?
+            = link_to 'Sign_in', new_session_path
